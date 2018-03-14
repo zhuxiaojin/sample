@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserLoginRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -34,11 +34,14 @@ class UserController extends Controller
      * @param Request $request
      * @author:Storm <qhj1989@qq.com>
      */
-    public function store(UserRequest $request)
+    public function store(UserLoginRequest $request)
     {
-        $user = User::create(
-            $request->all()
-        );
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+        \Auth::login($user);
         session()->flash('success', '欢迎，您将在这里开启一段新的旅程~');
         return redirect()->route('users.show', [$user]);
     }
