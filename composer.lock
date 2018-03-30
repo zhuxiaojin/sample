@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "80891bd1930d640e5bdd6ef8bf165a30",
+    "content-hash": "0afcc1353fca5eb115f0b35378d38c46",
     "packages": [
         {
             "name": "caouecs/laravel-lang",
@@ -2315,6 +2315,32 @@
                 "environment"
             ],
             "time": "2016-09-01T10:05:43+00:00"
+        },
+        {
+            "name": "zhuxiaojin/calendar-date",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zhuxiaojin/calendar-date.git",
+                "reference": "889e235cab48a4401c4e7452de77fe020b4c4295"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/zhuxiaojin/calendar-date/889e235cab48a4401c4e7452de77fe020b4c4295.zip",
+                "reference": "889e235cab48a4401c4e7452de77fe020b4c4295",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Calendar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2018-01-23T06:44:03+00:00"
         }
     ],
     "packages-dev": [
@@ -4223,7 +4249,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "zhuxiaojin/calendar-date": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
