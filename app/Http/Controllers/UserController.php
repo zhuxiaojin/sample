@@ -40,7 +40,8 @@ class UserController extends Controller
      * @author:Storm <qhj1989@qq.com>
      */
     public function show(User $user) {
-        return view('users.show', compact('user'));
+        $statuses = $user->statuses()->orderBy('created_at', 'desc')->paginate(30);
+        return view('users.show', compact('user', 'statuses'));
     }
 
     /**
@@ -89,8 +90,7 @@ class UserController extends Controller
         return redirect()->route('users.show', $user->id);
     }
 
-    public function destroy(User $user)
-    {
+    public function destroy(User $user) {
         $user->delete();
         session()->flash('success', '成功删除用户！');
         return back();

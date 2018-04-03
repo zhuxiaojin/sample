@@ -12,9 +12,12 @@ class StaticPagesController extends Controller
      * @return string
      * @author:Storm <qhj1989@qq.com>
      */
-    public function home()
-    {
-        return view('static_pages/home');
+    public function home() {
+        $feed_items = [];
+        if (\Auth::check()) {
+            $feed_items = \Auth::user()->feed()->paginate(30);
+        }
+        return view('static_pages/home', compact('feed_items'));
     }
 
     /**
@@ -22,8 +25,7 @@ class StaticPagesController extends Controller
      * @return string
      * @author:Storm <qhj1989@qq.com>
      */
-    public function about()
-    {
+    public function about() {
         return view('static_pages/about');
     }
 
@@ -32,8 +34,7 @@ class StaticPagesController extends Controller
      * @return string
      * @author:Storm <qhj1989@qq.com>
      */
-    public function help()
-    {
+    public function help() {
         return view('static_pages/help');
     }
 

@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','is_admin'
+        'name', 'email', 'password', 'is_admin'
     ];
 
     /**
@@ -31,9 +31,16 @@ class User extends Authenticatable
      * @return string :string $a
      * @author:Storm <qhj1989@qq.com>
      */
-    public function gravatar($size = 100)
-    {
+    public function gravatar($size = 100) {
         $hash = md5(strtolower(trim($this->attributes['email'])));
         return "http://www.gravatar.com/avatar/$hash?s=$size";
+    }
+
+    public function statuses() {
+        return $this->hasMany(Status::class);
+    }
+
+    public function feed() {
+        return $this->statuses()->orderBy('created_at', 'desc');
     }
 }
